@@ -8,8 +8,8 @@ import { WishItem } from 'src/shared/models/WishItem';
 })
 export class AppComponent implements OnInit{
   items: WishItem[] = [
-          new WishItem("Buy a Nissan Almera"),
-          new WishItem("Buy a High end Machine", false)
+          // new WishItem("Buy a Nissan Almera"),
+          // new WishItem("Buy a High end Machine", false)
   ]
   title = 'wishList';
 

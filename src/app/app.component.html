@@ -1,15 +1,19 @@
 <div class="container">
-	<div *ngIf="items.length === 0">
-		There are no wishes to display
-	</div>
-
-
-	<div class="list-group">
+	<div *ngIf="items.length === 0; then noItems else showItems"></div>
+	<ng-template #noItems>
 		<h1>{{title}}</h1>
-		<div class="list-group-item" *ngFor="let item of items">
-			<label class="form-check-label">
-				<input class="form-check-input" type="checkbox"> {{ item.wish }}
-			</label>
+		<p class="mr-2 mb-2">There are no wishes to display</p>
+		<i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+	</ng-template>
+
+	<ng-template #showItems>
+		<div class="list-group">
+			<h1>{{title}}</h1>
+			<div class="list-group-item" *ngFor="let item of items">
+				<label class="form-check-label">
+					<input class="form-check-input" type="checkbox"> {{ item.wish }}
+				</label>
+			</div>
 		</div>
-	</div>
+	</ng-template>
 </div>
