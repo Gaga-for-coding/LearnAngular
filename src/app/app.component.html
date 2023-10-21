@@ -1,4 +1,14 @@
 <div class="container">
+	<form class="row mt-3 gx-3 gy-2 justify-content-center align-items-center">
+		<div class="col-sm-6">
+			<label class="visually-hidden" >Wish</label>
+			<input type="text" class="form-control" [(ngModel)]="newWish" name="newWish">
+		</div>
+		<div class="col-auto">
+			<button type="submit" class="btn btn-primary" (click)="$event.preventDefault(); addWish()">Add Wish</button>
+		</div>
+	</form>
+
 	<div *ngIf="items.length === 0; then noItems else showItems"></div>
 	<ng-template #noItems>
 		<h1>{{title}}</h1>
@@ -10,8 +20,8 @@
 		<div class="list-group">
 			<h1>{{title}}</h1>
 			<div class="list-group-item" *ngFor="let item of items">
-				<label class="form-check-label">
-					<input class="form-check-input" type="checkbox"> {{ item.wish }}
+				<label class="form-check-label"> <!-- Property binding, we bound checked javascript input property to our isComplete boolean property -->
+					<input class="form-check-input" type="checkbox" [checked]="item.isComplete" (click)="toggleItem(item)"> {{ item.wish }}
 				</label>
 			</div>
 		</div>
